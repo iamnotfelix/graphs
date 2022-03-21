@@ -21,11 +21,11 @@ class TestGraph(unittest.TestCase):
 
         with self.assertRaises(Exception) as ex:
             graph.add_edge(1, 2, 1)
-        self.assertTrue(str(ex.exception) == "Edge already exists!\n")
+        self.assertTrue(str(ex.exception) == "Edge already exists!")
 
         with self.assertRaises(Exception) as ex:
             graph.add_edge(1, 3, 4)
-        self.assertTrue(str(ex.exception) == "These vertices do not exist!\n")
+        self.assertTrue(str(ex.exception) == "These vertices do not exist!")
 
 
     def test_remove_edge(self):
@@ -39,11 +39,11 @@ class TestGraph(unittest.TestCase):
 
         with self.assertRaises(Exception) as ex:
             graph.remove_edge(10, 11)
-        self.assertTrue(str(ex.exception) == "These vertices do not exist!\n")
+        self.assertTrue(str(ex.exception) == "These vertices do not exist!")
 
         with self.assertRaises(Exception) as ex:
             graph.remove_edge(4, 5)
-        self.assertTrue(str(ex.exception) == "Edge does not exist!\n")
+        self.assertTrue(str(ex.exception) == "Edge does not exist!")
 
         graph.remove_edge(3, 4)
         self.assertTrue(graph.get_number_of_edges() == 2)
@@ -68,7 +68,7 @@ class TestGraph(unittest.TestCase):
 
         with self.assertRaises(Exception) as ex:
             graph.add_vertex(0)
-        self.assertTrue(str(ex.exception) == "The vertex already exists!\n")
+        self.assertTrue(str(ex.exception) == "The vertex already exists!")
 
 
     
@@ -91,7 +91,7 @@ class TestGraph(unittest.TestCase):
 
         with self.assertRaises(Exception) as ex:
             graph.remove_vertex(0)
-        self.assertTrue(str(ex.exception) == "The vertex does not exist!\n")
+        self.assertTrue(str(ex.exception) == "The vertex does not exist!")
 
 
     def test_get_vertices(self):

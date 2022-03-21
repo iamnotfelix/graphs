@@ -29,10 +29,10 @@ class Graph:
 
     def add_edge(self, x, y, c=0):
         if self.is_edge(x, y):
-            raise Exception("Edge already exists!\n")
+            raise Exception("Edge already exists!")
 
         if not self.is_vertex(x) or not self.is_vertex(y):
-            raise Exception("These vertices do not exist!\n")
+            raise Exception("These vertices do not exist!")
 
         self.__out[x].add(y)
         self.__in[y].add(x)
@@ -41,10 +41,10 @@ class Graph:
 
     def remove_edge(self, x, y):
         if not self.is_vertex(x) or not self.is_vertex(y):
-            raise Exception("These vertices do not exist!\n")
+            raise Exception("These vertices do not exist!")
 
         if not self.is_edge(x, y):
-            raise Exception("Edge does not exist!\n")
+            raise Exception("Edge does not exist!")
 
         self.__cost.pop((x,y))
         self.__out[x].remove(y)
@@ -53,7 +53,7 @@ class Graph:
 
     def add_vertex(self, x):
         if self.is_vertex(x):
-            raise Exception("The vertex already exists!\n")
+            raise Exception("The vertex already exists!")
 
         self.__vertices.add(x)
         self.__out[x] = set()
@@ -62,7 +62,7 @@ class Graph:
 
     def remove_vertex(self, x):
         if  not self.is_vertex(x):
-            raise Exception("The vertex does not exist!\n")
+            raise Exception("The vertex does not exist!")
         
         left_vertices = copy.deepcopy(self.__out[x])
         for vertex in left_vertices:
@@ -100,21 +100,21 @@ class Graph:
 
     def get_out_degree(self, x):
         if not self.is_vertex(x):
-            raise Exception("The vertex does not exist!\n")
+            raise Exception("The vertex does not exist!")
         
         return len(self.__out[x])
 
 
     def get_in_degree(self, x):
         if not self.is_vertex(x):
-            raise Exception("The vertex does not exist!\n")
+            raise Exception("The vertex does not exist!")
         
         return len(self.__in[x])
 
 
     def get_out_bound_edges(self, x):
         if not self.is_vertex(x):
-            raise Exception("The vertex does not exist!\n")
+            raise Exception("The vertex does not exist!")
         
         for vertex in self.__out[x]:
             yield vertex
@@ -122,7 +122,7 @@ class Graph:
 
     def get_in_bound_edges(self, x):
         if not self.is_vertex(x):
-            raise Exception("The vertex does not exist!\n")
+            raise Exception("The vertex does not exist!")
 
         for vertex in self.__in[x]:
             yield vertex
@@ -130,20 +130,20 @@ class Graph:
 
     def get_cost(self, x, y):
         if not self.is_vertex(x) or not self.is_vertex(y):
-            raise Exception("These vertices do not exist!\n")
+            raise Exception("These vertices do not exist!")
 
         if not self.is_edge(x, y):
-            raise Exception("Edge does not exist!\n")
+            raise Exception("Edge does not exist!")
 
         return self.__cost[(x, y)]
 
 
     def update_cost(self, x, y, newCost):
         if not self.is_vertex(x) or not self.is_vertex(y):
-            raise Exception("These vertices do not exist!\n")
+            raise Exception("These vertices do not exist!")
 
         if not self.is_edge(x, y):
-            raise Exception("Edge does not exist!\n")
+            raise Exception("Edge does not exist!")
 
         self.__cost[(x, y)] = newCost
 
