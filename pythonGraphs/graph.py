@@ -13,8 +13,12 @@ class Graph:
 
         self.__initialize_graph(nr_vertices, nr_edges)
 
-
     def __initialize_graph(self, nr_vertices, nr_edges):
+        """
+            Initializes the graph with random edges.
+                nr_veritces: int - number of vertices
+                nr_edges: int - number of edges
+        """
         for i in range(nr_vertices):
             self.add_vertex(i)
 
@@ -28,6 +32,13 @@ class Graph:
 
 
     def add_edge(self, x, y, c=0):
+        """
+            Adds an edge to the graph.
+                x: int - start vertex
+                y: int - end vertex
+                c: int - cost of the edge
+            Raises error if vertices do not exist or if the edge already exists. 
+        """
         if not self.is_vertex(x) or not self.is_vertex(y):
             raise Exception("These vertices do not exist!")
 
@@ -40,6 +51,12 @@ class Graph:
 
 
     def remove_edge(self, x, y):
+        """
+            Removes an edge from the graph.
+                x: int - start vertex
+                y: int - end vertex
+            Raises error if vertices do not exist or if the edge already exists. 
+        """
         if not self.is_vertex(x) or not self.is_vertex(y):
             raise Exception("These vertices do not exist!")
 
@@ -52,6 +69,11 @@ class Graph:
 
 
     def add_vertex(self, x):
+        """
+            Adds vertex to the graph.
+                x: int - vertex
+            Raises error if the vertex already exists.
+        """
         if self.is_vertex(x):
             raise Exception("The vertex already exists!")
 
@@ -61,6 +83,11 @@ class Graph:
 
 
     def remove_vertex(self, x):
+        """
+            Removes a vertex, and all in bound and out bound edges of that vertex, from the graph.
+                x: int - vertex
+            Raises error if vertex does not exist.
+        """
         if  not self.is_vertex(x):
             raise Exception("The vertex does not exist!")
         
@@ -78,27 +105,52 @@ class Graph:
 
 
     def get_number_of_vertices(self):
+        """
+            Returns the number of vertices.
+        """
         return len(self.__vertices)
     
 
     def get_number_of_edges(self):
+        """
+            Returns the number of edges.
+        """
         return len(self.__cost)
 
 
     def get_vertices(self):
+        """
+            Vertex interator, yields all the vertices from the graph.
+        """
         for vertice in self.__vertices:
             yield vertice
 
 
     def is_edge(self, x, y):
+        """
+            Checks if an edge exists.
+                x: int - start vertex
+                y: int - end vertex
+            Returns true if exists and false otherwise.
+        """
         return y in self.__out[x]
 
 
     def is_vertex(self, x):
+        """
+            Checks if a vertex exists.
+                x: int - vertex
+            Returns true if exists and false otherwise.
+        """
         return x in self.__vertices
 
 
     def get_out_degree(self, x):
+        """
+            Returns the out degree of a vertex.
+                x: int - vertex
+            Raises an error if the vertex does not exist.
+        """
         if not self.is_vertex(x):
             raise Exception("The vertex does not exist!")
         
@@ -106,6 +158,11 @@ class Graph:
 
 
     def get_in_degree(self, x):
+        """
+            Returns the in degree of a vertex.
+                x: int - vertex
+            Raises an error if the vertex does not exist.
+        """
         if not self.is_vertex(x):
             raise Exception("The vertex does not exist!")
         
@@ -113,6 +170,11 @@ class Graph:
 
 
     def get_out_bound_edges(self, x):
+        """
+            Out bound edges iterator, yields all the out bound edges of a vertex.
+                x: int - vertex
+             Raises an error if the vertex does not exist.
+        """
         if not self.is_vertex(x):
             raise Exception("The vertex does not exist!")
         
@@ -121,6 +183,11 @@ class Graph:
 
 
     def get_in_bound_edges(self, x):
+        """
+            In bound edges iterator, yields all the in bound edges of a vertex.
+                x: int - vertex
+             Raises an error if the vertex does not exist.
+        """
         if not self.is_vertex(x):
             raise Exception("The vertex does not exist!")
 
@@ -129,6 +196,12 @@ class Graph:
 
 
     def get_cost(self, x, y):
+        """
+            Returns the cost of an edge.
+                x: int - start vertex
+                y: int - end vertex
+            Raises error if vertices do not exist or if the edge does not exist. 
+        """
         if not self.is_vertex(x) or not self.is_vertex(y):
             raise Exception("These vertices do not exist!")
 
@@ -139,6 +212,13 @@ class Graph:
 
 
     def update_cost(self, x, y, newCost):
+        """
+            Updates the cost of an edge.
+                x: int - start vertex
+                y: int - end vertex
+                newCost: int - new cost of the edge
+            Raises error if vertices do not exist or if the edge does not exist. 
+        """
         if not self.is_vertex(x) or not self.is_vertex(y):
             raise Exception("These vertices do not exist!")
 
@@ -149,4 +229,7 @@ class Graph:
 
 
     def copy(self):
+        """
+            Returns a deepcopy of the graph.
+        """
         return copy.deepcopy(self)
