@@ -28,11 +28,11 @@ class Graph:
 
 
     def add_edge(self, x, y, c=0):
-        if self.is_edge(x, y):
-            raise Exception("Edge already exists!")
-
         if not self.is_vertex(x) or not self.is_vertex(y):
             raise Exception("These vertices do not exist!")
+
+        if self.is_edge(x, y):
+            raise Exception("Edge already exists!")
 
         self.__out[x].add(y)
         self.__in[y].add(x)
