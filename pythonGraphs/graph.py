@@ -11,6 +11,10 @@ class Graph:
         self.__out = dict()
         self.__cost = dict()
 
+        if nr_edges != 0:
+            if (nr_vertices * (nr_vertices + 1) / 2) < nr_edges:
+                raise Exception("Graph is not possible!")
+
         self.__initialize_graph(nr_vertices, nr_edges)
 
     def __initialize_graph(self, nr_vertices, nr_edges):
