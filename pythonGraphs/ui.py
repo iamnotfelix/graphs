@@ -1,6 +1,7 @@
 
 from graph import Graph
 from utils import *
+from connected import get_connected_components
 
 
 class UI:
@@ -28,6 +29,7 @@ class UI:
         print("14\tParse inbound edges.")
         print("15\tGet cost.")
         print("16\tUpdate cost.")
+        print("17\tGet connected components.")
 
         print("exit\tExit the application.")
 
@@ -130,6 +132,14 @@ class UI:
         c = int(input("New cost: "))
 
         self.graph.update_cost(x, y, c)
+    
+    def get_connected(self):
+        components = get_connected_components(self.graph)
+        for i, component in enumerate(components):
+            vertices = ""
+            for vertex in component.get_vertices():
+                vertices += str(vertex) + ' '
+            print(f"Component {i + 1}: {vertices}")
 
     def command_handler(self):
         commands = {
@@ -149,6 +159,7 @@ class UI:
             "14": self.get_in_edges,
             "15": self.get_cost,
             "16": self.update_cost,
+            "17": self.get_connected,
             "0": exit
         }
 
